@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SlnErp102.Core.Models.Stocks.Products
+﻿namespace SlnErp102.Api.DTOs.Stocks.Products
 {
- public class StockState
+    public class StockStateDto
     {
         public int Id { get; set; }
         public string ProductCode { get; set; }
@@ -14,7 +8,7 @@ namespace SlnErp102.Core.Models.Stocks.Products
         public int StockQuantity { get; set; } = 0;
         public int ShelfQuantity { get; set; } = 0;
         public int BranchQuantity { get; set; } = 0;
-        public int ConsigmentQuantity { get; set; } = 0;
+        public int ConsigmentQuantity         { get; set; } = 0;
         public int TransferedProductQuantity { get; set; } = 0;
     }
 }

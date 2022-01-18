@@ -31,10 +31,6 @@ using SlnErp102.Core.Service.Stocks.Products;
 var builder = WebApplication.CreateBuilder(args);
 
 
-
-
-
-
 // Add services to the container.
 builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
@@ -70,6 +66,18 @@ builder.Services.AddScoped<IEmployeeDetailRepository, EmployeeDetailRepository>(
 
 builder.Services.AddScoped<IProductService,   ProductService>();
 builder.Services.AddScoped<IProductRepository,ProductRepository>();
+
+builder.Services.AddScoped<IProductEntryService,   ProductEntryService>();
+builder.Services.AddScoped<IProductEntryRepository,ProductEntryRepository>();
+
+builder.Services.AddScoped<IStockStateService,   StockStateService>();
+builder.Services.AddScoped<IStockStateRepository,StockStateRepository>();
+                                                 
+
+
+
+
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddDbContext<SlnDbContext>(options =>

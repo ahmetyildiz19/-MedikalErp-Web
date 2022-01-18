@@ -21,6 +21,7 @@ using SlnErp102.Data.Seed.Info.Employees;
 using SlnErp102.Data.Seed.Info.Hospitals;
 using SlnErp102.Core.Models.Stocks.Products;
 using SlnErp102.Data.Seed.Stocks.Products;
+using SlnErp102.Data.Configuration.Stocks.Products;
 
 namespace SlnErp102.Data
 {
@@ -50,6 +51,8 @@ namespace SlnErp102.Data
         public DbSet<Employee> Employees { get; set; }
         public DbSet<EmployeeDetail> EmployeeDetails { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ProductEntry> ProductEntries { get; set; }
+        public DbSet<StockState> StockStates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -70,6 +73,10 @@ namespace SlnErp102.Data
             modelBuilder.ApplyConfiguration(new HospitalDetailConfig());
             modelBuilder.ApplyConfiguration(new HospitalTypeConfig());
             modelBuilder.ApplyConfiguration(new HospitalBranchConfig());
+          
+            modelBuilder.ApplyConfiguration(new ProductConfig());
+            modelBuilder.ApplyConfiguration(new ProductEntryConfig());
+            modelBuilder.ApplyConfiguration(new StockStateConfig());
 
 
             modelBuilder.ApplyConfiguration(new CityConfig());
