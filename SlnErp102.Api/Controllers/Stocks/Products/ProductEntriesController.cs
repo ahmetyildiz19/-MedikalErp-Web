@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SlnErp102.Api.DTOs.Stocks.Products;
 using SlnErp102.Core.Models.Stocks.Products;
+using SlnErp102.Core.Service.Infos.Companies;
 using SlnErp102.Core.Service.Stocks.Products;
 
 namespace SlnErp102.Api.Controllers.Stocks.Products
@@ -18,56 +19,69 @@ namespace SlnErp102.Api.Controllers.Stocks.Products
     public class ProductEntriesController : ControllerBase
     {
         private readonly IProductEntryService _service;
+        private readonly ICompanyService _cService;
         private readonly IMapper _mapper;
+        private readonly IStockStateService _ssService;
+
         public ProductEntriesController(IProductEntryService service,
-IMapper mapper)
+        IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
+            _ssService = _ssService;
+            _cService = _cService;
         }
 
         // GET: api/ProductEntries
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ProductEntry>>> GetProductEntry()
         {
-             var pro = await _service.GetAllAsync();
-            return Ok(_mapper.Map<IEnumerable<ProductEntryDto>>(pro));
+            //var pEntry = await _service.GetAllAsync();
+            var test = await _service.DistincListByCompany();//2 kayıt getirmek için yaptım.
+            var test1 = _mapper.Map<IEnumerable<ProductEntryDistinctDto>>(test);
+            //var sonuc = 
+            //foreach (var name in test1)
+            //{
+            //    name.CompanyName= await _cService.Where(x => x.Id ==name.CompanyId);
+            //}
+            //return Ok(_mapper.Map<IEnumerable<ProductEntryDto>>(pEntry));
+
+            return Ok(test1);
         }
 
         // GET: api/ProductEntries/5
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductEntry>> GetProductEntry(int id)
         {
-            var pro = await _service.GetByIdAsync(id);
-            return Ok(value: _mapper.Map<ProductEntryDto>(pro));
+            var pEntry = await _service.GetByIdAsync(id);
+            return Ok(_mapper.Map<ProductEntryDto>(pEntry));
         }
 
         // PUT: api/ProductEntries/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProductEntry(int id, ProductEntryDto proDto)
+        public async Task<IActionResult> PutProductEntry(int id, ProductEntryDto pEntryDto)
         {
-            if (id != proDto.Id)
+            if (id != pEntryDto.Id)
             {
                 return BadRequest();
             }
-            var pro = await _service.GetByIdAsync(id);
-            pro.CompanyId = proDto.CompanyId;
-            pro.InvoiceNumber = proDto.InvoiceNumber;
-            pro.ProductId = proDto.ProductId;
-            pro.LotSerial = proDto.LotSerial;
-            pro.Quantity = proDto.Quantity;
-            pro.EntryTypeId = proDto.EntryTypeId;
-            pro.SurgerySide = proDto.SurgerySide;
-            pro.SurgeryType = proDto.SurgeryType;
-            pro.Barcode = proDto.Barcode;
-            pro.Description = proDto.Description;           
-            pro.EntryDate = proDto.EntryDate;
-            pro.ProductionDate = proDto.ProductionDate;
-            pro.ExpirationDate = proDto.ExpirationDate;
+            var pEntry = await _service.GetByIdAsync(id);
 
+            pEntry.Barcode = pEntryDto.Barcode;
+            pEntry.CompanyId = pEntryDto.CompanyId;
+            pEntry.Description = pEntryDto.Description;
+            pEntry.EntryDate = pEntryDto.EntryDate;
+            pEntry.EntryTypeId = pEntryDto.EntryTypeId;
+            pEntry.ExpirationDate = pEntryDto.ExpirationDate;
+            pEntry.InvoiceNumber = pEntryDto.InvoiceNumber;
+            pEntry.LotSerial = pEntryDto.LotSerial;
+            pEntry.ProductId = pEntryDto.ProductId;
+            pEntry.ProductionDate = pEntryDto.ProductionDate;
+            pEntry.Quantity = pEntryDto.Quantity;
 
-            _service.Update(_mapper.Map<ProductEntry>(pro));
+            //_service.Update(_mapper.Map<ProductEntry>(pEntry));
+            _service.Update(pEntry);
 
             return NoContent();
         }
@@ -75,10 +89,13 @@ IMapper mapper)
         // POST: api/ProductEntries
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ProductEntry>> PostProductEntry(ProductEntryDto productEntryDto)
+        public async Task<ActionResult<ProductEntry>> PostProductEntry(IEnumerable<ProductEntryDto> pEntryDto)
         {
-            var pro = await _service.AddAsync(_mapper.Map<ProductEntry>(productEntryDto));
-            return Created(string.Empty, _mapper.Map<ProductEntryDto>(pro));
+            var pEntry = await _service.AddRangeAsync(_mapper.Map<IEnumerable<ProductEntry>>(pEntryDto));
+
+
+
+            return Created(string.Empty, _mapper.Map<IEnumerable<ProductEntryDto>>(pEntry));
         }
 
         // DELETE: api/ProductEntries/5
@@ -91,10 +108,5 @@ IMapper mapper)
             _service.Remove(pro);
             return NoContent();
         }
-
-        //private bool ProductEntryExists(int id)
-        //{
-        //    return _context.ProductEntry.Any(e => e.Id == id);
-        //}
     }
 }

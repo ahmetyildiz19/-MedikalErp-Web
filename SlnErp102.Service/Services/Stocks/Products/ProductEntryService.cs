@@ -14,6 +14,12 @@ namespace SlnErp102.Service.Services.Stocks.Products
     {
         public ProductEntryService(IUnitOfWork unitOfWork, IRepository<ProductEntry> repository) : base(unitOfWork, repository)
         {
+            
+        }
+
+        public async Task<IEnumerable<ProductEntry>> DistincListByCompany()
+        {
+            return await _unitOfWork.ProductEntryRepo.DistincListByCompany();
         }
     }
 }

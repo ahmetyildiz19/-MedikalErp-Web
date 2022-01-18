@@ -15,8 +15,8 @@ namespace SlnErp102.Data.Configuration.Stocks.Products
         {
             builder.HasKey(s => s.Id);
             builder.Property(s => s.Id).UseIdentityColumn();
-            builder.Property(s => s.CompanyId).IsRequired();
-            builder.Property(s => s.ProductId).IsRequired();
+            //builder.Property(s => s.CompanyId).IsRequired();
+            //builder.Property(s => s.ProductId).IsRequired();
             builder.Property(s => s.Description).HasMaxLength(350);
             builder.Property(s => s.InvoiceNumber).HasMaxLength(150);
             builder.Property(s => s.LotSerial).HasMaxLength(150);
