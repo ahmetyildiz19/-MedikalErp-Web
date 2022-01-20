@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlnErp102.Api", "SlnErp102.Api\SlnErp102.Api.csproj", "{86F01440-82D5-4D88-970A-32FD8A53E58F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlnErp102.Api", "SlnErp102.Api\SlnErp102.Api.csproj", "{86F01440-82D5-4D88-970A-32FD8A53E58F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlnErp102.Data", "SlnErp102.Data\SlnErp102.Data.csproj", "{4DE0E767-39B5-4D9F-AC09-1DABA0AB97A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlnErp102.Data", "SlnErp102.Data\SlnErp102.Data.csproj", "{4DE0E767-39B5-4D9F-AC09-1DABA0AB97A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlnErp102.Core", "SlnErp102.Core\SlnErp102.Core.csproj", "{37DDBD66-6F5F-42DA-847E-5B6306A05DF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlnErp102.Core", "SlnErp102.Core\SlnErp102.Core.csproj", "{37DDBD66-6F5F-42DA-847E-5B6306A05DF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlnErp102.Service", "SlnErp102.Service\SlnErp102.Service.csproj", "{AE210BCA-162C-466B-8C30-5EC13A409ACE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SlnErp102.Service", "SlnErp102.Service\SlnErp102.Service.csproj", "{AE210BCA-162C-466B-8C30-5EC13A409ACE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlnErp102.Mvc", "SlnErp102.Mvc\SlnErp102.Mvc.csproj", "{D1D70108-EF85-4078-8E49-FE22C6755DED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{AE210BCA-162C-466B-8C30-5EC13A409ACE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE210BCA-162C-466B-8C30-5EC13A409ACE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE210BCA-162C-466B-8C30-5EC13A409ACE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1D70108-EF85-4078-8E49-FE22C6755DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D70108-EF85-4078-8E49-FE22C6755DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D70108-EF85-4078-8E49-FE22C6755DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D70108-EF85-4078-8E49-FE22C6755DED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

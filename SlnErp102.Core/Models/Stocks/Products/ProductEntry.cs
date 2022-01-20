@@ -21,7 +21,7 @@ namespace SlnErp102.Core.Models.Stocks.Products
         public DateTime ProductionDate { get; set; }
         public DateTime ExpirationDate { get; set; }
 
-        //public virtual Company? Company { get; set; }
+        public virtual Company? Company { get; set; }
         public virtual Product? Product { get; set; }
     }
 }

@@ -38,15 +38,9 @@ namespace SlnErp102.Api.Controllers.Stocks.Products
         {
             //var pEntry = await _service.GetAllAsync();
             var test = await _service.DistincListByCompany();//2 kayıt getirmek için yaptım.
-            var test1 = _mapper.Map<IEnumerable<ProductEntryDistinctDto>>(test);
-            //var sonuc = 
-            //foreach (var name in test1)
-            //{
-            //    name.CompanyName= await _cService.Where(x => x.Id ==name.CompanyId);
-            //}
+            
             //return Ok(_mapper.Map<IEnumerable<ProductEntryDto>>(pEntry));
-
-            return Ok(test1);
+            return Ok(_mapper.Map<IEnumerable<ProductEntryDistinctDto>>(test));
         }
 
         // GET: api/ProductEntries/5

@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ProductEntryDistinctDto>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div class=container>
+    <a class="btn btn-primary mb-3 col-md-2" asp-action="Create">Product Adding</a>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Company Id</th>
+                <th>Company Name</th>
+                <th>Entry Date</th>
+                <th>Invoice Number</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th class="col-md-1">@item.Id</th>
+                    <th class="col-md-1">@item.CompanyId</th>
+                    <th class="col-md-3">@item.CompanyName</th>
+                    <th class="col-md-3">@item.EntryDate</th>
+                    <th class="col-md-2">@item.InvoiceNumber</th>
+                    <th class="col-md-2">
+                        <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-ivno="@item.InvoiceNumber">Details</a>
+                        <a class="btn btn-success btn-sm" asp-action="Update" asp-route-id="@item.Id">Update</a>
+                        <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

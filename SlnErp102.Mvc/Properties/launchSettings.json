@@ -1,31 +1,28 @@
-{
-  "$schema": "https://json.schemastore.org/launchsettings.json",
+﻿{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:12274",
-      "sslPort": 44317
+      "applicationUrl": "http://localhost:34485",
+      "sslPort": 44351
     }
   },
   "profiles": {
-    "SlnErp102.Api": {
+    "SlnErp102.Mvc": {
       "commandName": "Project",
+      "dotnetRunMessages": true,
       "launchBrowser": true,
-      "launchUrl": "swagger",
+      "applicationUrl": "https://localhost:7055;http://localhost:5055",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:7052;http://localhost:5052",
-      "dotnetRunMessages": true
+      }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
-    }    
+    }
   }
 }

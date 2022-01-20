@@ -73,7 +73,7 @@ namespace SlnErp102.Data
             modelBuilder.ApplyConfiguration(new HospitalDetailConfig());
             modelBuilder.ApplyConfiguration(new HospitalTypeConfig());
             modelBuilder.ApplyConfiguration(new HospitalBranchConfig());
-          
+
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new ProductEntryConfig());
             modelBuilder.ApplyConfiguration(new StockStateConfig());
@@ -101,6 +101,20 @@ namespace SlnErp102.Data
             modelBuilder.ApplyConfiguration(new EmployeeDetailSeed());
 
             modelBuilder.ApplyConfiguration(new ProductSeed());
+
+
+            //Yontem 1 - Cascade işlemini değiştirmek için kullanıldı.
+            //modelBuilder.Entity<Product>()
+            //   .HasMany(n => n.ProductEntries)
+            //   .WithOne(n => n.Product)
+            //   .OnDelete(DeleteBehavior.NoAction);
+            //Yontem 2 - Cascade işlemini değiştirmek için kullanıldı.
+            modelBuilder.Entity<Company>()
+                .HasMany(n => n.ProductEntries)
+                .WithOne(n => n.Company)
+                .OnDelete(DeleteBehavior.NoAction);
+
+
         }
     }
 }
