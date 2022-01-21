@@ -21,5 +21,12 @@ namespace SlnErp102.Service.Services.Stocks.Products
         {
             return await _unitOfWork.ProductEntryRepo.DistincListByCompany();
         }
+
+        public async Task<IEnumerable<ProductEntry>> GetProductByInvoiceNumber(string ivno)
+        {
+            return await
+
+            _unitOfWork.ProductEntryRepo.GetProductByInvoiceNumber(ivno);
+        }
     }
 }

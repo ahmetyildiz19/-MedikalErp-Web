@@ -38,13 +38,21 @@ namespace SlnErp102.Api.Controllers.Stocks.Products
         {
             //var pEntry = await _service.GetAllAsync();
             var test = await _service.DistincListByCompany();//2 kayıt getirmek için yaptım.
-            
+
             //return Ok(_mapper.Map<IEnumerable<ProductEntryDto>>(pEntry));
             return Ok(_mapper.Map<IEnumerable<ProductEntryDistinctDto>>(test));
         }
 
+        [HttpGet("a/{ivno}")]
+        public async Task<IActionResult> GetProductEntryByIvno(string ivno)
+        {
+            var result = await _service.GetProductByInvoiceNumber(ivno);
+
+            return Ok(_mapper.Map<IEnumerable<ProductEntryDto>>(result));
+        }
+
         // GET: api/ProductEntries/5
-        [HttpGet("{id}")]
+        [HttpGet("int/{id:int}")]
         public async Task<ActionResult<ProductEntry>> GetProductEntry(int id)
         {
             var pEntry = await _service.GetByIdAsync(id);

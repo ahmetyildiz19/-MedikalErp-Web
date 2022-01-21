@@ -19,15 +19,18 @@ namespace SlnErp102.Mvc.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var productEntry = await _productEntryApiService.GetAllAsync();
+            var productEnrty = await _productEntryApiService.GetAllAsync();
 
-            return View(_mapper.Map<IEnumerable<ProductEntryDistinctDto>>(productEntry));
+            return View(_mapper.Map<IEnumerable<ProductEntryDistinctDto>>(productEnrty));
         }
 
-        public async Task<IActionResult> Details(string invo)
+        public async Task<IActionResult> Details(string ivno)
         {
-            var a = invo;
-            return View();
+            var pEntry =
+              await _productEntryApiService.GetProEntryByIvnoAsync(ivno);
+            return View(_mapper.Map<IEnumerable<ProductEntryDto>>(pEntry));
         }
+
+        
     }
 }

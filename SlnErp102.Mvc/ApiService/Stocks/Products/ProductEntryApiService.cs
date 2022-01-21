@@ -29,5 +29,25 @@ namespace SlnErp102.Mvc.ApiService.Stocks.Products
             }
             return pEntryDtos;
         }
+
+        public async Task<IEnumerable<ProductEntryDto>?> GetProEntryByIvnoAsync(string ivno)
+        {
+            IEnumerable<ProductEntryDto>? pEntryDtos;
+
+            var response = await _httpClient.GetAsync($"ProductEntries/a/{ivno}");
+
+            //ProductEntries/InvoiceNumberString/1234
+            //ProductEntries/InvoiceNumberString/4321
+
+            if (response.IsSuccessStatusCode)
+            {
+                pEntryDtos = JsonConvert.DeserializeObject<IEnumerable<ProductEntryDto>>(await response.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                pEntryDtos = null;
+            }
+            return pEntryDtos;
+        }
     }
 }
